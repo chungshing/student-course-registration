@@ -54,8 +54,18 @@ public class RegistrationController {
     }
 
     @GetMapping("/student-courses")
-    public String studentCourses(Model model) {
-        model.addAttribute("registrations", registrationService.getAllRegistrations());
+    public String studentCourses(
+            @RequestParam(name = "keyword", required = false) String keyword,
+            Model model) {
+
+        var registrations = registrationService.getAllRegistrations().stream()
+                .filter(r -> keyword == null || keyword.isBlank()
+                        || r.getStudent().getName().toLowerCase().contains(keyword.toLowerCase()))
+                .toList();
+
+        model.addAttribute("registrations", registrations);
+        model.addAttribute("keyword", keyword);
+
         return "student-courses";
     }
 }

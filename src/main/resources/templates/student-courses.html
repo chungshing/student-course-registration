@@ -17,6 +17,23 @@
 
         <h2>Student Course Registrations</h2>
 
+        <br /><br />
+
+        <form th:action="@{/student-courses}" method="get">
+            <input
+                type="text"
+                name="keyword"
+                placeholder="Search by student name"
+                th:value="${keyword}"
+            />
+
+            <button type="submit">Search</button>
+
+            <a href="/student-courses">Clear</a>
+        </form>
+
+        <br />
+
         <table border="1" cellpadding="5">
             <tr>
                 <th>Student</th>

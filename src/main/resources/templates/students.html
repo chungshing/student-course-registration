@@ -31,6 +31,22 @@
             <button type="submit">Add Student</button>
         </form>
 
+        <br /><br />
+        <br /><br />
+
+        <form th:action="@{/students}" method="get">
+            <input
+                type="text"
+                name="keyword"
+                placeholder="Search by student name"
+                th:value="${keyword}"
+            />
+
+            <button type="submit">Search</button>
+
+            <a href="/students">Clear</a>
+        </form>
+
         <br />
 
         <table border="1" cellpadding="5">
