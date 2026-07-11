@@ -40,4 +40,8 @@ public class RegistrationService {
         studentService.getStudentById(studentId);
         return studentCourseRepository.findByStudentId(studentId);
     }
+
+    public List<StudentCourse> getAllRegistrations() {
+        return studentCourseRepository.findAll();
+    }
 }

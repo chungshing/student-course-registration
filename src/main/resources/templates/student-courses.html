@@ -30,5 +30,6 @@
                 <td th:text="${registration.course.name}"></td>
             </tr>
         </table>
+        <p th:if="${#lists.isEmpty(registrations)}">No student course registrations found.</p>
     </body>
 </html>

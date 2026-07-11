@@ -54,21 +54,8 @@ public class RegistrationController {
     }
 
     @GetMapping("/student-courses")
-    public String studentCourses(
-            @RequestParam(name = "studentId", required = false) Long studentId,
-            Model model) {
-
-        model.addAttribute("students", studentService.getAllStudents());
-
-        if (studentId != null) {
-            try {
-                model.addAttribute("registrations", registrationService.getCoursesForStudent(studentId));
-                model.addAttribute("selectedStudentId", studentId);
-            } catch (StudentNotFoundException e) {
-                model.addAttribute("error", e.getMessage());
-            }
-        }
-
+    public String studentCourses(Model model) {
+        model.addAttribute("registrations", registrationService.getAllRegistrations());
         return "student-courses";
     }
 }
