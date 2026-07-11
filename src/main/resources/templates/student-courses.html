@@ -1,0 +1,34 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Student Courses</title>
+    </head>
+    <body>
+        <h1>Student Course Registration System</h1>
+
+        <hr />
+
+        <a href="/">Home</a> | <a href="/students">Students</a> | <a href="/courses">Courses</a> |
+        <a href="/register">Register</a> | <a href="/student-courses">Student Courses</a> |
+        <a href="/logout">Logout</a>
+
+        <hr />
+
+        <h2>Student Course Registrations</h2>
+
+        <table border="1" cellpadding="5">
+            <tr>
+                <th>Student</th>
+                <th>Email</th>
+                <th>Course</th>
+            </tr>
+
+            <tr th:each="registration : ${registrations}">
+                <td th:text="${registration.student.name}"></td>
+                <td th:text="${registration.student.email}"></td>
+                <td th:text="${registration.course.name}"></td>
+            </tr>
+        </table>
+    </body>
+</html>

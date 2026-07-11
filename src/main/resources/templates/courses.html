@@ -1,0 +1,43 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Courses</title>
+    </head>
+    <body>
+        <h1>Student Course Registration System</h1>
+
+        <hr />
+
+        <a href="/">Home</a> | <a href="/students">Students</a> | <a href="/courses">Courses</a> |
+        <a href="/register">Register</a> | <a href="/student-courses">Student Courses</a> |
+        <a href="/logout">Logout</a>
+
+        <hr />
+
+        <h2>Manage Courses</h2>
+
+        <form th:action="@{/courses}" th:object="${course}" method="post">
+            <label>Course Name</label><br />
+            <input type="text" th:field="*{name}" required />
+
+            <br /><br />
+
+            <button type="submit">Add Course</button>
+        </form>
+
+        <br />
+
+        <table border="1" cellpadding="5">
+            <tr>
+                <th>ID</th>
+                <th>Course Name</th>
+            </tr>
+
+            <tr th:each="course : ${courses}">
+                <td th:text="${course.id}"></td>
+                <td th:text="${course.name}"></td>
+            </tr>
+        </table>
+    </body>
+</html>
